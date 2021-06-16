@@ -1,0 +1,16 @@
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+.glitch .img-top {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.glitch:hover .img-top {
+    display: inline;
+}
+
