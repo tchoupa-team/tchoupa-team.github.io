@@ -11,6 +11,7 @@ draft: false
     <img src="/avatar/tchoupie.png" width="150" height="150" /><br />
     Réalité Virtuelle et Augmentée<br />
     Steganography • Misc <br />
+    <a href="https://www.root-me.org/SuperTchoup" target="_blank"><img width="50" height="50" src="https://www.root-me.org/IMG/siteon0.svg" alt="Root-me Logo" title="Root-me Tchoupie" /></a>
     <a href="https://github.com/Tchoupie" target="_blank"><img width="45" height="45" src="/logo/github.png" alt="git Logo" title="GitHub Tchoupie" /></a>
   </li>
   <li>
