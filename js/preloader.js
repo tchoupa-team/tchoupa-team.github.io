@@ -72,6 +72,7 @@ var strings = [
   var repeat = 0;
   
   function addLog() {
+    jQuery("#main").fadeOut("fast");
     var row = createLog('ok', count);
     preloader.appendChild(row);
     
@@ -144,29 +145,5 @@ var strings = [
     $(document).scrollTop($(document).height()); 
   }
   
-  function setCookie(cname,cvalue,exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
   
-  // below method reference https://stackoverflow.com/questions/5639346/what-is-the-shortest-function-for-reading-a-cookie-by-name-in-javascript/25490531#25490531
-  function getCookie(a) {
-    var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
-    return b ? b.pop() : '';
-  }
-  
-  function checkCookie() {
-    var user=getCookie("visited"); 
-    if (user == 1) {   
-      setCookie("visited", 1, 30); //this will update the cookie      
-      jQuery("#main").fadeIn("slow"); 
-    } else {  
-      addLog();      
-      setCookie("visited", 1, 30);   
-  
-    }
-  }
-  
-  checkCookie();
+  jQuery("#main").fadeIn("slow");
