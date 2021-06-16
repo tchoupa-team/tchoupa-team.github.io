@@ -1,6 +1,6 @@
-baseURL = "https://tchoupa-team.github.io/"
+baseURL = "http://tchoupapps.fr"
 languageCode = "fr-fr"
-title = "Tchoupa-fr"
+title = "Tchoupapps-fr"
 
 [[menu.main]]
   name = "About"
