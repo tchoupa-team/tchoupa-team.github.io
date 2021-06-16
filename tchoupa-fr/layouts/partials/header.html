@@ -1,0 +1,24 @@
+<header>
+    <div class="navbar-dark ">
+        <div class="container menu">
+            <nav class="navbar px-0 navbar-expand-lg ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="pl-md-0 p-3 text-decoration-none ">
+                            <h3 class="bold"><span class="color_danger">TCHOUPA</span><span class="color_white">TEAM</span></h3>
+                        </a>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <!-- config.toml -->
+                        {{ range .Site.Menus.main }}
+                            <a href="{{ .URL }}" class="p-3 text-decoration-none text-dark bold">{{ .Name }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>

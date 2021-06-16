@@ -1,0 +1,16 @@
+baseURL = "https://tchoupa.fr/"
+languageCode = "fr-fr"
+title = "Tchoupa-fr"
+
+[[menu.main]]
+  name = "About"
+  url = "/about"
+  weight = 43
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 42
+
+[markup.goldmark.renderer]
+unsafe= true
