@@ -117,6 +117,11 @@ body {
     background-color: var(--color-bg);
 }
 
+#writeup {
+    background-color: var(--color-bg);
+    color:var(--blend-color-5);
+
+}
 .solved .badge {
     background-color: #17b06b94;
     border: 1px solid #17b06b;
@@ -156,15 +161,15 @@ body {
     border-top: 4px solid #ef121b94;
 }
 
-.category_reversing {
+.category_reverse {
     border-top: 4px solid #17b06b94;
 }
 
-.category_steg {
+.category_steganography {
     border-top: 4px solid #f9751594;
 }
 
-.category_pwning {
+.category_pwn {
     border-top: 4px solid #00a09994;
 }
 
@@ -181,7 +186,7 @@ body {
     border-top: 4px solid #ffce5694;
 }
 
-.category_crypt {
+.category_cryptography {
     border-top: 4px solid #9966FF94;
 }
 
