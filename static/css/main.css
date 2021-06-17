@@ -117,11 +117,6 @@ body {
     background-color: var(--color-bg);
 }
 
-#writeup {
-    background-color: var(--color-bg);
-    color:var(--blend-color-5);
-
-}
 .solved .badge {
     background-color: #17b06b94;
     border: 1px solid #17b06b;
