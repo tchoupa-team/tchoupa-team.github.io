@@ -5,12 +5,17 @@ title = "Tchoupapps-fr"
 [[menu.main]]
   name = "About"
   url = "/about"
-  weight = 43
+  weight = 44
 
 [[menu.main]]
   name = "Home"
   url = "/"
   weight = 42
+
+[[menu.main]]
+  name = "Writeups"
+  url = "/posts"
+  weight = 43
 
 [markup.goldmark.renderer]
 unsafe= true

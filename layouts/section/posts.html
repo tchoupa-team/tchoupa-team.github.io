@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <h1 class="display-1 bold color_white content__title text-center"><span class="color_danger">WRITE</span>UPS</span></h1>
+                <div class="cut">
+                </div>
+                <div class="row hackerFont">
+                    {{ range .Data.Pages }}
+                        <div class="col-md-4 mb-3">
+                            <a href="{{ .Permalink }}" style="text-decoration: none; color:inherit">
+                                <div 
+                                    style="
+                                        border-color: #3E71A7;
+                                        padding-top: 2rem;
+                                        padding-bottom: 2rem;
+                                        " 
+                                    class="card h-100 align-items-center"
+                                >
+                                    <div class="card-body text-center" data-target="#problem_id_1" data-toggle="collapse" aria-expanded="false" aria-controls="problem_id_1">
+                                        <h4
+                                            style="
+                                                color: #5BA4C2;
+                                            "
+                                        > {{ .Params.name }}</h4>
+                                        <p>{{ .Params.info }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
