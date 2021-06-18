@@ -1,18 +1,50 @@
 {{ define "main" }}
+
 <div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
     <div class="container">
-        <div class="row">
+        
+        <div class="row"> 
             <div class="col-xl-12">
                 <h1 class="display-1 bold color_white content__title text-center"><span class="color_danger">{{ .Title }}</span>{{ .Params.year }}</span></h1>
                 <div class="cut">
-
                 </div>
-                <div class="row justify-content-center hackerFont">
-                    <div class="col-md-8">
-                        <h4 class="bold color_white pt-3 text-center">
-                            WORKING IN PROGRESS
-                        </h4>
+                <div class="row hackerFont justify-content-center mt-5">
+                    <div class="col-md-12" style="color: #3E71A7;">
+                        <br><br>Challenge Types:
+                        <span class="p-1" style="background-color:#ef121b94;color: whitesmoke;">Web</span>
+                        <span class="p-1" style="background-color:#17b06b94;color: whitesmoke;">Reverse</span>
+                        <span class="p-1" style="background-color:#f9751594;color: whitesmoke;">Steganography</span>
+                        <span class="p-1" style="background-color:#36a2eb94;color: whitesmoke;">Pwn</span>
+                        <span class="p-1" style="background-color:#9966FF94;color: whitesmoke;">Cryptography</span>
+                        <span class="p-1" style="background-color:#cfa94794;color: white;">Other</span>
                     </div>
+                </div>
+                <div class="cut">
+                </div>
+                <div class="row hackerFont">
+                    {{ range .Data.Pages }}
+                        <div class="col-md-4 mb-3">
+                            <a href="{{ .Permalink }}" style="text-decoration: none; color:inherit">
+                                <div 
+                                    style="
+                                        padding-top: 2rem;
+                                        padding-bottom: 2rem;
+                                        " 
+                                    class="card h-100 category_{{ .Params.category }} align-items-center"
+                                >
+                                    <div class="card-body text-center" >
+                                        <h4
+                                            style="
+                                                color: #5BA4C2;
+                                            "
+                                        > {{ .Params.chall_name }}</h4>
+                                        <p>{{ .Params.name }}</p>
+                                        <span class="badge">{{ .Params.points }} pts</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{ end }}
                 </div>
             </div>
         </div>

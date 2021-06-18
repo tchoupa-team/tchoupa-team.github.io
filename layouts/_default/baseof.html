@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     <!-- HEAD-->
-    {{ partial "head.html" . }}
+    {{- partial "head.html" . -}}
 
     <!--BODY-->}
     <body class="imgloaded">
 
         <!--HEADER-->
-        {{ partial "header.html" . }}
+        {{- partial "header.html" . -}}
     
         {{ block "main" . }}
         {{ end }}        
