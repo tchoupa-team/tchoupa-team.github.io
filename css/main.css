@@ -153,23 +153,23 @@ body {
 }
 
 .category_web {
-    border-top: 4px solid #ef121b94;
+    border-top: 7px solid #ef121b94;
 }
 
 .category_reverse {
-    border-top: 4px solid #17b06b94;
+    border-top: 7px solid #17b06b94;
 }
 
 .category_steganography {
-    border-top: 4px solid #f9751594;
+    border-top: 7px solid #f9751594;
 }
 
 .category_pwn {
-    border-top: 4px solid #00a09994;
+    border-top: 7px solid #00a09994;
 }
 
 .category_machine {
-    border-top: 4px solid #0f329894;
+    border-top: 7px solid #0f329894;
 }
 
 .category_machine a:hover {
@@ -178,11 +178,11 @@ body {
 }
 
 .category_misc {
-    border-top: 4px solid #ffce5694;
+    border-top: 7px solid #ffce5694;
 }
 
 .category_cryptography {
-    border-top: 4px solid #9966FF94;
+    border-top: 7px solid #9966FF94;
 }
 
 .hackerFont {
