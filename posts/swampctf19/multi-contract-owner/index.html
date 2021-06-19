@@ -1,0 +1,67 @@
+<!doctype html><html lang=fr-fr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Tchoupa-Team</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous><link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css><link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet><link rel=stylesheet href=https://tchoupapps.fr/css/main.css><link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css><link rel=stylesheet href=https://tchoupapps.fr/css/menu.css><link rel=stylesheet href=https://tchoupapps.fr/css/member.css><link rel=stylesheet href=https://tchoupapps.fr/css/chall.css></head>}<body class=imgloaded><header><div class=navbar-dark><div class="container menu"><nav class="navbar px-0 navbar-expand-lg"><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a href=index.html class="pl-md-0 p-3 text-decoration-none"><h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3></a></div><div class="navbar-nav ml-auto"><a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
+<a href=/posts class="p-3 text-decoration-none text-dark bold">Writeups</a>
+<a href=/about class="p-3 text-decoration-none text-dark bold">About</a></div></div></nav></div></div></header><div class="jumbotron bg-transparent mb-0 pt-3 radius-0"><div class=container><div class=row><div class=col-xl-12><h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>MULTI-CONTRACT-OWNER</span></h1><div class=cut></div><p class="text-spacey text-center hackerFont lead" style=color:gray>Swamp CTF 2019 - blockchain (425 pts).<br>Written by ChapeauR0uge.</p><div class=chall><h1 id=multi_contract_owner>Multi_Contract_Owner</h1><h2 id=description>Description</h2><p><img src=/files/swampctf19/multi-contract-owner/pres.png alt="multi_contract_owner - SwampCTF'19"></p><h2 id=résolution>Résolution</h2><h3 id=mise-en-place-de-lenvironnement-de-travail>Mise en place de l&rsquo;environnement de travail</h3><ol><li><p>Pre-requis :</p><ul><li>Apprentissage du langage solidity : <a href=https://cryptozombies.io/>CryptoZombie</a></li><li>Quelques bases en Javascript.</li></ul></li><li><p>Installation du plugin <a href=https://metamask.io/>Metasmask</a> :</p><p>Celui-ci va nous servir de Wallet pour nos transactions avec la blockchain de test.</p><p>Paramétrer le wallet sur le <code>Ropsen Test Network</code>, puis deposer de <code>l'ether Faucet</code> pour nos futures transactions.</p><p><img src=/files/swampctf19/multi-contract-owner/inst1.png alt="inst1 - SwampCTF'19"></p><p>Voilà notre plugin metasmask est prêt.</p></li><li><p>Paramétrage de l&rsquo;IDE <a href=https://remix.ethereum.org/>Remix</a></p><p><code>Remix</code> est un IDE du langage <code>solidity</code> qui va nous permettre d&rsquo;interagir avec les contrats deployés dans la blockchain.</p><p>Le choix de la version du compilateur doit être le même que celui de notre code (valeur à côté du pragma).</p><p>Maintenant dans la section run de <code>Remix</code>:</p><p><img src=/files/swampctf19/multi-contract-owner/rem1.png alt="rem1 - SwampCTF'19"></p><p>Si la case Account est vide, il s&rsquo;agit d&rsquo;un bug connu, dans la console du navigateur entrez la commande suivante:</p><pre><code class=language-console data-lang=console>window.ethereum.enable()
+</code></pre><p>``</p></li></ol><h3 id=le-challenge>Le challenge</h3><p><img src=/files/swampctf19/multi-contract-owner/desc.png alt="desc - SwampCTF'19"></p><p>Nous avons le contrat suivant à deployer dans la blockchain :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-solidity data-lang=solidity><span style=color:#66d9ef>pragma solidity</span> <span style=color:#f92672>^</span><span style=color:#ae81ff>0</span>.<span style=color:#ae81ff>4</span>.<span style=color:#ae81ff>24</span>;
+
+<span style=color:#66d9ef>contract</span> <span style=color:#a6e22e>Ownable</span> {
+
+    <span style=color:#66d9ef>event</span> <span style=color:#a6e22e>OwnerAdded</span>(<span style=color:#66d9ef>address</span>);
+    <span style=color:#66d9ef>event</span> <span style=color:#a6e22e>OwnerRemoved</span>(<span style=color:#66d9ef>address</span>);
+
+    <span style=color:#66d9ef>address</span> <span style=color:#66d9ef>public</span> implementation;
+    <span style=color:#66d9ef>mapping</span> (<span style=color:#66d9ef>address</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>bool</span>) <span style=color:#66d9ef>public</span> owners;
+
+    <span style=color:#66d9ef>modifier</span> <span style=color:#a6e22e>onlyOwner</span>() {
+        require(owners[msg.sender], <span style=color:#e6db74>&#34;Must be an owner to call this function&#34;</span>);
+        <span style=color:#66d9ef>_</span>;
+    }
+
+    <span style=color:#75715e>/** Only called when contract is instantiated
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>constructor</span>() <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>payable</span> {
+        require(msg.value <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>.<span style=color:#ae81ff>5</span> <span style=color:#66d9ef>ether</span>, <span style=color:#e6db74>&#34;Must send 0.5 Ether&#34;</span>);
+        owners[msg.sender] <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+    }
+
+    <span style=color:#75715e>/** Add an owner to the owners list
+</span><span style=color:#75715e>     *  Only allow owners to add other owners
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>addOwner</span>(<span style=color:#66d9ef>address</span> _owner) <span style=color:#66d9ef>public</span> onlyOwner { 
+        owners[_owner] <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+        emit OwnerAdded(_owner);
+    }
+
+    <span style=color:#75715e>/** Remove another owner
+</span><span style=color:#75715e>     *  Only allow owners to remove other owners
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>removeOwner</span>(<span style=color:#66d9ef>address</span> _owner) <span style=color:#66d9ef>public</span> onlyOwner { 
+        owners[_owner] <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+        emit OwnerRemoved(_owner);
+    }
+
+    <span style=color:#75715e>/** Remove all owners mapping and relinquish control of contract
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>renounceOwnership</span>() <span style=color:#66d9ef>public</span> {
+        <span style=color:#66d9ef>assembly</span> {
+            store(owners_offset, <span style=color:#ae81ff>0x0</span>)
+        }
+    }
+    
+    <span style=color:#75715e>/** CTF helper function
+</span><span style=color:#75715e>     *  Used to clean up contract and return funds
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>killContract</span>() <span style=color:#66d9ef>public</span> onlyOwner {
+        selfdestruct(msg.sender);
+    }
+
+    <span style=color:#75715e>/** CTF helper function
+</span><span style=color:#75715e>     *  Used to check if challenge is complete
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>isComplete</span>() <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>view</span> <span style=color:#66d9ef>returns</span>(<span style=color:#66d9ef>bool</span>) {
+        <span style=color:#66d9ef>return</span> owners[msg.sender];
+    }
+
+}
+</code></pre></div><p>Nous déployons le contrat en appuyant sur <code>deploy</code>, puis nous entrons son adresse dans Remix:</p><p><img src=/files/swampctf19/multi-contract-owner/depl.png alt="depl - SwampCTF'19"></p><p><img src=/static/files/swampctf19/multi-contract-owner/rem2.png alt="rem2 - SwampCTF'19"></p><p>Le principe des challenges de ce CTF, va être que la fonction <code>isComplete()</code> renvoie <code>True</code>.</p><p>Ici, notre objectif va être d&rsquo;être le <code>Owner</code> de ce contrat.</p><p>Ainsi, en lisant le code nous remarquons qu&rsquo;un appel à la fonction <code>contructor</code> avec l&rsquo;envoi de <code>0.5 ether</code> (Appuyez sur <code>constructor</code> en ayant mis <code>0.5 ether</code> dans le champs <code>Value</code> sur <code>Remix</code>) nous donne une entrée dans la table <code>owners</code>.
+Alors nous sommes donc maintenant dans la table des <code>owners</code>, la condition <code>isComplete()</code> est vérifié.</p><p><img src=/files/swampctf19/multi-contract-owner/flag1.png alt="flag1 - SwampCTF'19"></p><p><img src=/files/swampctf19/multi-contract-owner/flag2.png alt="flag2 - SwampCTF'19"></p><p>Ce challenge est simple, car il servait d&rsquo;introduction aux autres challenges du CTF.</p><h2 id=flag>Flag</h2><p><strong>flag{3v3ryb0dy5_hum4n_r34d_c10s31y}</strong></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script></body></html>

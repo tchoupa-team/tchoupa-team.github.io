@@ -168,8 +168,12 @@ body {
     border-top: 7px solid #00a09994;
 }
 
-.category_machine {
+.category_osint {
     border-top: 7px solid #0f329894;
+}
+
+.category_forensic {
+    border-top: 7px solid #eb36dc94;
 }
 
 .category_machine a:hover {
@@ -179,6 +183,10 @@ body {
 
 .category_misc {
     border-top: 7px solid #ffce5694;
+}
+
+.category_blockchain {
+    border-top: 7px solid #51e9a994;
 }
 
 .category_cryptography {

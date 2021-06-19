@@ -1,0 +1,37 @@
+.chall h1, h2, h3{
+    letter-spacing: 1px;
+    font-family: Hack, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.chall h1{
+    color: #276d81;
+}
+
+.chall li{
+    color: #276d81;
+}
+.chall h2{
+    color: #5BA4C2;
+    margin-top: 2rem;
+}
+
+.chall h3{
+    color: #276d81;
+}
+
+.chall p{
+    font-family: Lato, sans-serif;
+    letter-spacing: 1px;
+    color: gray;
+}
+
+.chall a{
+    letter-spacing: 1px;
+}
+
+code {
+    color: #276d81;
+}
+.chall pre{
+    padding: 15px;
+}
