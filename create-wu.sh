@@ -135,5 +135,5 @@ mkdir "./static/files/${choice}/${file_name}"
 echo -e "${green}[+] ./static/files/${choice}/${file_name} created${normal}"
 cp ${source_path}/* "./static/files/${choice}/${file_name}"
 cat ./static/files/${choice}/${file_name}/*.md >> "./content/posts/${choice}/${file_name}.md"
-rm /static/files/${choice}/${file_name}/*.md
+rm ./static/files/${choice}/${file_name}/*.md
 echo -e "${green} New write-up added on server"
