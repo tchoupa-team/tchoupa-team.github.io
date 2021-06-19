@@ -8,9 +8,10 @@
                 <h1 class="display-1 bold color_white content__title text-center"><span class="color_danger">{{ .Title }}</span></h1>
                 <div class="cut">
                 </div>
-                <h4 class="text-center">
-                    WORKING IN PROGRESS
-                </h4>
+                <p class="text-spacey text-center hackerFont lead" style="color:gray"> {{ .Params.name }} - {{ .Params.category }} ({{ .Params.points }} pts).<br />Written by {{ .Params.author}}.</p>
+                <div class="chall">
+                    {{ .Content }}
+                </div>
             </div>
         </div>
     </div>

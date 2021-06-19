@@ -7,24 +7,25 @@ date: 2021-06-18T07:00:55-07:00
 weight: 20
 draft: false
 info: ""
-points: "200"
+points: "235"
+author: "ChapeauR0uge"
 ---
 
 # Genetics
 
 ## Description
 
-![genetics - b00t2root'19](pres.png)
+![genetics - b00t2root'19](/files/b00t2root19/genetics/pres.png)
 
 ## Résolution
 
-J'ouvre mon [fichier](Bibliography.txt).
+J'ouvre le `message`.
 
 ```bash
 ACCAGTAAAACGTTGAGACAGTTGAATATCAAACTACACCGAATTCATATGTCACAGCGGCCGACACAGATGATAACA
 ```
 
-Le première chose que je remarque, c'est la présence de seulement 4 lettres différentes dans notre code : *A*, *C*, *T* et *G*.
+Le première chose que je remarque, c'est la présence de seulement 4 lettres différentes dans notre `message` : *A*, *C*, *T* et *G*.
 
 Je lance un recherche sur google, aussitôt je tombe sur des sites qui parle de codage génétique (qui d'ailleurs est le titre du chall).
 
@@ -33,9 +34,9 @@ Puis je tombe sur une présentation d'un langage ésotérique grâce au code gé
 
 Ceci est une fausse piste, car il s'git d'un encodage pour base 64, donc je cherche une autre source, pour enfin tomber sur le github de JohnHammond "ctf-katana" avec la table suivante:
  
-![DNA code alphabet](dna_codes.png)
+![DNA code alphabet](/files/b00t2root19/genetics/dna_codes.png)
 
-J'écrit un [programme python](DNAdecoder.py) ainsi qu'un petit script bash pour son exécution :
+J'écris un petit [programme python](/files/b00t2root19/genetics/DNAdecoder.py) ainsi qu'un petit script bash pour son exécution :
 
 ```bash
 #!/bin/bash

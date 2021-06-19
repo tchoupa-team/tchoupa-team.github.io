@@ -10,4 +10,6 @@ name: "UMDCTF 2021"
 year: "21"
 type: "posts"
 layout: "chall"
+cascade:
+    name: "UMDCTF 2021"
 ---
