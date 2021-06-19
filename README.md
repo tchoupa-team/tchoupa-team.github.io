@@ -10,5 +10,12 @@ To build this project localy, you need `HUGO`:
 $ sudo snap install hugo
 ```
 
+## Usage
+* Launch hugo local server
+```bash
+hugo server
+```
+* Open your browser at the right localhost address to see the result.
+ 
 ## License
 MIT
