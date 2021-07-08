@@ -1,6 +1,6 @@
 ---
 title: "TO BE OR NOT TO BE"
-chall_name: "to-be-or-not-to-be"
+chall_name: "To Be Or Not To Be"
 category: "pwn"
 description: ""
 date: 2021-07-08T13:57:07-04:00
