@@ -5,7 +5,7 @@ category: "pwn"
 description: ""
 date: 2021-07-08T13:37:51-04:00
 weight: 20
-draft: true
+draft: false
 info: ""
 points: "256"
 author: "BisBis"
