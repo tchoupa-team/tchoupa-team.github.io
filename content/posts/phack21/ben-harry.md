@@ -1,6 +1,6 @@
 ---
 title: "BEN HARRY"
-chall_name: "ben-harry"
+chall_name: "Ben & Harry"
 category: "misc"
 description: ""
 date: 2021-07-08T13:23:23-04:00
