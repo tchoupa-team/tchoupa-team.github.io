@@ -1,0 +1,61 @@
+<!doctype html><html lang=fr-fr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Tchoupa-Team</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous><link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css><link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet><link rel=stylesheet href=https://tchoupapps.fr/css/main.css><link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css><link rel=stylesheet href=https://tchoupapps.fr/css/menu.css><link rel=stylesheet href=https://tchoupapps.fr/css/member.css><link rel=stylesheet href=https://tchoupapps.fr/css/chall.css></head>}<body class=imgloaded><header><div class=navbar-dark><div class="container menu"><nav class="navbar px-0 navbar-expand-lg"><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a href=index.html class="pl-md-0 p-3 text-decoration-none"><h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3></a></div><div class="navbar-nav ml-auto"><a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
+<a href=/posts class="p-3 text-decoration-none text-dark bold">Writeups</a>
+<a href=/about class="p-3 text-decoration-none text-dark bold">About</a></div></div></nav></div></div></header><div class="jumbotron bg-transparent mb-0 pt-3 radius-0"><div class=container><div class=row><div class=col-xl-12><h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>BEN HARRY</span></h1><div class=cut></div><p class="text-spacey text-center hackerFont lead" style=color:gray>P'Hack 2021 - misc (100 pts).<br>Written by BisBis.</p><div class=chall><h1 id=ben--harry>Ben & Harry</h1><p>We have to go on the website : ben-and-harry.phack.fr:1664</p><p><img src=/files/phack21/ben-harry/c1.PNG alt=capture1></p><p>We can see three informations, &ldquo;b&rdquo; ,&ldquo;code&rdquo; and &ldquo;msg&rdquo;</p><p>The msg is asking us to answer it so after a while, we manage to understand that the &ldquo;b&rdquo; variable is the base used for the number.
+So our guess is to decrypt using the base and then send back to the server the answer.</p><p>Here is the python script :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> pwn <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+<span style=color:#f92672>import</span> json
+<span style=color:#f92672>import</span> time
+
+
+<span style=color:#f92672>from</span> math <span style=color:#f92672>import</span> pow, log
+ 
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>convert</span>(nbr, old_base, new_base):
+    <span style=color:#e6db74>&#34; nbr est un str, old_base et new_base des entiers &#34;</span>
+    chiffres <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;0&#39;</span>, <span style=color:#e6db74>&#39;1&#39;</span>, <span style=color:#e6db74>&#39;2&#39;</span>, <span style=color:#e6db74>&#39;3&#39;</span>, <span style=color:#e6db74>&#39;4&#39;</span>, <span style=color:#e6db74>&#39;5&#39;</span>, <span style=color:#e6db74>&#39;6&#39;</span>, <span style=color:#e6db74>&#39;7&#39;</span>, <span style=color:#e6db74>&#39;8&#39;</span>, <span style=color:#e6db74>&#39;9&#39;</span>, <span style=color:#e6db74>&#39;a&#39;</span>, <span style=color:#e6db74>&#39;b&#39;</span>, <span style=color:#e6db74>&#39;c&#39;</span>, <span style=color:#e6db74>&#39;d&#39;</span>, <span style=color:#e6db74>&#39;e&#39;</span>, <span style=color:#e6db74>&#39;f&#39;</span>, <span style=color:#e6db74>&#39;g&#39;</span>, <span style=color:#e6db74>&#39;h&#39;</span>, <span style=color:#e6db74>&#39;i&#39;</span>, <span style=color:#e6db74>&#39;j&#39;</span>, <span style=color:#e6db74>&#39;k&#39;</span>, <span style=color:#e6db74>&#39;l&#39;</span>, <span style=color:#e6db74>&#39;m&#39;</span>, <span style=color:#e6db74>&#39;n&#39;</span>, <span style=color:#e6db74>&#39;o&#39;</span>, <span style=color:#e6db74>&#39;p&#39;</span>, <span style=color:#e6db74>&#39;q&#39;</span>, <span style=color:#e6db74>&#39;r&#39;</span>, <span style=color:#e6db74>&#39;s&#39;</span>, <span style=color:#e6db74>&#39;t&#39;</span>, <span style=color:#e6db74>&#39;u&#39;</span>, <span style=color:#e6db74>&#39;v&#39;</span>, <span style=color:#e6db74>&#39;w&#39;</span>, <span style=color:#e6db74>&#39;x&#39;</span>, <span style=color:#e6db74>&#39;y&#39;</span>, <span style=color:#e6db74>&#39;z&#39;</span>]
+    nbr_dec <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+    i <span style=color:#f92672>=</span> len(nbr) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>for</span> x <span style=color:#f92672>in</span> nbr:
+        nbr_dec <span style=color:#f92672>+=</span> chiffres<span style=color:#f92672>.</span>index(x) <span style=color:#f92672>*</span> int(pow(old_base, i))
+        i <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
+    nbr_chars <span style=color:#f92672>=</span> int(log(nbr_dec)<span style=color:#f92672>/</span>log(new_base) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)
+    nbr_final <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>
+    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>, nbr_chars):
+        x <span style=color:#f92672>=</span> int(nbr_dec <span style=color:#f92672>/</span> pow(new_base, nbr_chars<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span><span style=color:#f92672>-</span>i))
+        nbr_dec <span style=color:#f92672>-=</span> int(x <span style=color:#f92672>*</span> pow(new_base, nbr_chars<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span><span style=color:#f92672>-</span>i))
+        nbr_final <span style=color:#f92672>+=</span> chiffres[x]
+    <span style=color:#66d9ef>return</span> nbr_final
+context(arch <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;i386&#39;</span>, os <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;linux&#39;</span>)
+
+cpt <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+r <span style=color:#f92672>=</span> remote(<span style=color:#e6db74>&#39;ben-and-harry.phack.fr&#39;</span>, <span style=color:#ae81ff>1664</span>)
+v<span style=color:#f92672>=</span>r<span style=color:#f92672>.</span>recvline()
+res <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>loads(v)
+
+tab_char<span style=color:#f92672>=</span>[]
+<span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> res[<span style=color:#e6db74>&#34;code&#34;</span>]<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34; &#34;</span>):
+	tab_char<span style=color:#f92672>.</span>append(chr(int(str(convert(c,res[<span style=color:#e6db74>&#34;b&#34;</span>],<span style=color:#ae81ff>10</span>)))))
+tab<span style=color:#f92672>=</span>[]
+<span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> <span style=color:#e6db74>&#34;oui&#34;</span>:
+	tab<span style=color:#f92672>.</span>append(convert(str(ord(c)),<span style=color:#ae81ff>10</span>,res[<span style=color:#e6db74>&#34;b&#34;</span>]))
+
+r<span style=color:#f92672>.</span>send(<span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>.</span>join(tab_char))
+<span style=color:#66d9ef>while</span> <span style=color:#66d9ef>True</span>:
+	time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>1</span>)
+	v<span style=color:#f92672>=</span>r<span style=color:#f92672>.</span>recvline()
+	print(v)	
+	res <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>loads(v[<span style=color:#ae81ff>3</span>:])
+	tab_char<span style=color:#f92672>=</span>[]
+	<span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> res[<span style=color:#e6db74>&#34;code&#34;</span>]<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34; &#34;</span>):
+		tab_char<span style=color:#f92672>.</span>append(chr(int(str(convert(c,res[<span style=color:#e6db74>&#34;b&#34;</span>],<span style=color:#ae81ff>10</span>)))))
+	tab<span style=color:#f92672>=</span>[]
+	<span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> <span style=color:#e6db74>&#34;oui&#34;</span>:
+		tab<span style=color:#f92672>.</span>append(convert(str(ord(c)),<span style=color:#ae81ff>10</span>,res[<span style=color:#e6db74>&#34;b&#34;</span>]))
+	r<span style=color:#f92672>.</span>send(<span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>.</span>join(tab_char))
+	cpt<span style=color:#f92672>+=</span><span style=color:#ae81ff>1</span>
+	
+</code></pre></div><p>Basically what it does :</p><pre><code>-  Open a connection 
+- Receive and load the json 
+- Convert every number into the decimal base and append it to a list
+- Send the list of converted number
+</code></pre><p>We had to do &ldquo;one loop&rdquo; outside the while because after sending the first answer, the json object is a little different that the first one.
+With this we are able to fetch the data and answer the good message as much as the server require to get the flag.</p><p><img src=/files/phack21/ben-harry/c2.PNG alt=capture2></p><p>And we got the flag !</p></div></div></div></div><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script></body></html>
