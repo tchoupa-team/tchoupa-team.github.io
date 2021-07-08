@@ -156,24 +156,49 @@ body {
     border-top: 7px solid #ef121b94;
 }
 
+.web {
+    border-color: #ef121b94;
+}
+
 .category_reverse {
     border-top: 7px solid #17b06b94;
+}
+
+.reverse {
+    border-color: #17b06b94;
 }
 
 .category_steganography {
     border-top: 7px solid #f9751594;
 }
 
+.steganography {
+    border-color: #f9751594;
+}
+
+
 .category_pwn {
     border-top: 7px solid #00a09994;
+}
+
+.pwn {
+    border-color: #00a09994 !important;
 }
 
 .category_osint {
     border-top: 7px solid #0f329894;
 }
 
+.osint {
+    border-color: #0f329894;
+}
+
 .category_forensic {
     border-top: 7px solid #eb36dc94;
+}
+
+.forensic {
+    border-color: #eb36dc94;
 }
 
 .category_machine a:hover {
@@ -185,12 +210,24 @@ body {
     border-top: 7px solid #ffce5694;
 }
 
+.misc {
+    border-color: #ffce5694;
+}
+
 .category_blockchain {
     border-top: 7px solid #51e9a994;
 }
 
+.blockchain {
+    border-color: #51e9a994;
+}
+
 .category_cryptography {
     border-top: 7px solid #9966FF94;
+}
+
+.cryptography {
+    border-color: #9966FF94;
 }
 
 .hackerFont {
