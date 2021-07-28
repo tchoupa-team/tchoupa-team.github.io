@@ -1,12 +1,70 @@
-<!doctype html><html lang=fr-fr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Tchoupa-Team</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous><link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css><link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet><link rel=stylesheet href=https://tchoupapps.fr/css/main.css><link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css><link rel=stylesheet href=https://tchoupapps.fr/css/menu.css><link rel=stylesheet href=https://tchoupapps.fr/css/member.css><link rel=stylesheet href=https://tchoupapps.fr/css/chall.css></head>}<body class=imgloaded><header><div class=navbar-dark><div class="container menu"><nav class="navbar px-0 navbar-expand-lg"><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a href=index.html class="pl-md-0 p-3 text-decoration-none"><h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3></a></div><div class="navbar-nav ml-auto"><a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
+<!doctype html><html lang=fr-fr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Tchoupa-Team</title>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous>
+<link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet>
+<link rel=stylesheet href=https://tchoupapps.fr/css/main.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/menu.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/member.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/chall.css>
+</head>}
+<body class=imgloaded>
+<header>
+<div class=navbar-dark>
+<div class="container menu">
+<nav class="navbar px-0 navbar-expand-lg">
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarNavAltMarkup>
+<div class=navbar-nav>
+<a href=index.html class="pl-md-0 p-3 text-decoration-none">
+<h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3>
+</a>
+</div>
+<div class="navbar-nav ml-auto">
+<a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
 <a href=/posts class="p-3 text-decoration-none text-dark bold">Writeups</a>
-<a href=/about class="p-3 text-decoration-none text-dark bold">About</a></div></div></nav></div></div></header><div class="jumbotron bg-transparent mb-0 pt-3 radius-0"><div class=container><div class=row><div class=col-xl-12><h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>PHILLIP1</span></h1><div class=cut></div><p class="text-spacey text-center hackerFont lead" style=color:gray>UMDCTF 2021 - forensic (433 pts).<br>Written by ChapeauR0uge.</p><div class=chall><h1 id=phillip-1>Phillip 1</h1><h2 id=description>Description</h2><p><img src=/files/umdctf21/phillip1/phillip1.PNG alt="Phillip 1 - UMDCTF'21"></p><p>We have 3 files in this challenge:</p><ul><li>module.dwarf</li><li>philip-1.raw.zip</li><li>System.map-5.8.0-25-generic</li></ul><h2 id=solve>Solve</h2><p>We quickly understand, we have <code>dwarf</code> and <code>System.map</code> for built a custom volatility profile, for analysing our philip-1.raw .</p><p>So let&rsquo;s build it:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ zip _phillip.zip module.dwarf System.map-5.8.0-25-generic
+<a href=/about class="p-3 text-decoration-none text-dark bold">About</a>
+</div>
+</div>
+</nav>
+</div>
+</div>
+</header>
+<div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
+<div class=container>
+<div class=row>
+<div class=col-xl-12>
+<h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>PHILLIP1</span></h1>
+<div class=cut>
+</div>
+<p class="text-spacey text-center hackerFont lead" style=color:gray> UMDCTF 2021 - forensic (433 pts).<br>Written by ChapeauR0uge.</p>
+<div class=chall>
+<h1 id=phillip-1>Phillip 1</h1>
+<h2 id=description>Description</h2>
+<p><img src=/files/umdctf21/phillip1/phillip1.PNG alt="Phillip 1 - UMDCTF'21"></p>
+<p>We have 3 files in this challenge:</p>
+<ul>
+<li>module.dwarf</li>
+<li>philip-1.raw.zip</li>
+<li>System.map-5.8.0-25-generic</li>
+</ul>
+<h2 id=solve>Solve</h2>
+<p>We quickly understand, we have <code>dwarf</code> and <code>System.map</code> for built a custom volatility profile, for analysing our philip-1.raw .</p>
+<p>So let&rsquo;s build it:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ zip _phillip.zip module.dwarf System.map-5.8.0-25-generic
 $ sudo mv _phillip.zip /usr/local/lib/python2.7/dist-packages/volatility/plugins/overlays/linux/.
 $ sudo vol.py --info | grep phillip
 Volatility Foundation Volatility Framework 2.6.1
 Linux_phillipx64              - A Profile <span style=color:#66d9ef>for</span> Linux _phillip x64
-</code></pre></div><p>Ok,now we have the profile, we can dig into our dump.</p><p>In first, I check the bash_history :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_bash
+</code></pre></div><p>Ok,now we have the profile, we can dig into our dump.</p>
+<p>In first, I check the bash_history :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_bash
 Volatility Foundation Volatility Framework 2.6.1
 Pid      Name                 Command Time                   Command
 -------- -------------------- ------------------------------ -------
@@ -14,16 +72,25 @@ Pid      Name                 Command Time                   Command
     <span style=color:#ae81ff>1534</span> bash                 2021-04-03 03:19:19 UTC+0000   scp -i key -P <span style=color:#ae81ff>5001</span> ./super-secret-flag lubuntu@chals2.umdctf.io:~/
     <span style=color:#ae81ff>1534</span> bash                 2021-04-14 22:11:37 UTC+0000   ssh -i key lubuntu@chals2.umdctf.io -p <span style=color:#ae81ff>5001</span>
 
-</code></pre></div><p>Ok, we had many information here:</p><ul><li>First, he sends <code>super-secret-flag</code> to <a href=mailto:lubuntu@chals2.umdctf.io>lubuntu@chals2.umdctf.io</a> through ssh with his private key.</li><li>Secondly, he connects to this ssh with his private key.</li></ul><p>We need to find his private key:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_enumerate_files | grep /home/lubuntu
+</code></pre></div><p>Ok, we had many information here:</p>
+<ul>
+<li>First, he sends <code>super-secret-flag</code> to <a href=mailto:lubuntu@chals2.umdctf.io>lubuntu@chals2.umdctf.io</a> through ssh with his private key.</li>
+<li>Secondly, he connects to this ssh with his private key.</li>
+</ul>
+<p>We need to find his private key:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_enumerate_files | grep /home/lubuntu
 ...
 0xffff95f1c3139f60                      <span style=color:#ae81ff>5702</span> /cow/upper/home/lubuntu/key
 0xffff95f1c313d7a0                      <span style=color:#ae81ff>5697</span> /cow/upper/home/lubuntu/super-secret-flags
 ...
-</code></pre></div><p>We are dumping these files:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_find_file -i 0xffff95f1c3139f60 -O key
+</code></pre></div><p>We are dumping these files:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_find_file -i 0xffff95f1c3139f60 -O key
 $ sudo vol.py -f philip-1.raw --profile<span style=color:#f92672>=</span>Linux_phillipx64 linux_find_file -i 0xffff95f1c313d7a0 -O super-secret-flags
-</code></pre></div><p>Firstly, we check <code>super-secret-flags</code>:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ cat super-secret-flags  | base64 -d
+</code></pre></div><p>Firstly, we check <code>super-secret-flags</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ cat super-secret-flags  | base64 -d
 <span style=color:#f92672>{</span>i_can_patch_ez_try_again<span style=color:#f92672>}</span>
-</code></pre></div><p>A dead end, but we have also a private ssh key:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$  ssh -i key lubuntu@chals2.umdctf.io -p <span style=color:#ae81ff>5001</span>
+</code></pre></div><p>A dead end, but we have also a private ssh key:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$  ssh -i key lubuntu@chals2.umdctf.io -p <span style=color:#ae81ff>5001</span>
 Welcome to Ubuntu 20.04.2 LTS <span style=color:#f92672>(</span>GNU/Linux 5.4.0-51-generic x86_64<span style=color:#f92672>)</span>
 
  * Documentation:  https://help.ubuntu.com
@@ -46,4 +113,14 @@ $ ls
 super-secret-flag
 $ cat super-secret-flag | base64 -d
 UMDCTF-<span style=color:#f92672>{</span>G4ll4gh3r_4_1if3<span style=color:#f92672>}</span>
-</code></pre></div><p>Et voilà, we found the flag !</p><h2 id=flag>Flag</h2><p><strong>UMDCTF-{G4ll4gh3r_4_1if3}</strong></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script></body></html>
+</code></pre></div><p>Et voilà, we found the flag !</p>
+<h2 id=flag>Flag</h2>
+<p><strong>UMDCTF-{G4ll4gh3r_4_1if3}</strong></p>
+</div>
+</div>
+</div>
+</div>
+<script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script>
+</body>
+</html>

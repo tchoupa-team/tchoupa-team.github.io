@@ -1,12 +1,88 @@
-<!doctype html><html lang=fr-fr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Tchoupa-Team</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous><link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css><link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet><link rel=stylesheet href=https://tchoupapps.fr/css/main.css><link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css><link rel=stylesheet href=https://tchoupapps.fr/css/menu.css><link rel=stylesheet href=https://tchoupapps.fr/css/member.css><link rel=stylesheet href=https://tchoupapps.fr/css/chall.css></head>}<body class=imgloaded><header><div class=navbar-dark><div class="container menu"><nav class="navbar px-0 navbar-expand-lg"><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a href=index.html class="pl-md-0 p-3 text-decoration-none"><h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3></a></div><div class="navbar-nav ml-auto"><a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
+<!doctype html><html lang=fr-fr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Tchoupa-Team</title>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous>
+<link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet>
+<link rel=stylesheet href=https://tchoupapps.fr/css/main.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/menu.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/member.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/chall.css>
+</head>}
+<body class=imgloaded>
+<header>
+<div class=navbar-dark>
+<div class="container menu">
+<nav class="navbar px-0 navbar-expand-lg">
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarNavAltMarkup>
+<div class=navbar-nav>
+<a href=index.html class="pl-md-0 p-3 text-decoration-none">
+<h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3>
+</a>
+</div>
+<div class="navbar-nav ml-auto">
+<a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
 <a href=/posts class="p-3 text-decoration-none text-dark bold">Writeups</a>
-<a href=/about class="p-3 text-decoration-none text-dark bold">About</a></div></div></nav></div></div></header><div class="jumbotron bg-transparent mb-0 pt-3 radius-0"><div class=container><div class=row><div class=col-xl-12><h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>SUDOKUV2</span></h1><div class=cut></div><p class="text-spacey text-center hackerFont lead" style=color:gray>P'Hack 2021 - pwn (256 pts).<br>Written by BisBis.</p><div class=chall><h1 id=sudoku-v2>Sudoku v2</h1><p>On this challenge, we got a little hint in the description about the fact that, in order to help the user the system administrator
-enabled asterisks when entering a password.</p><p>We connect via ssh with given login/password</p><p>We when connect, we are prompted with a message :</p><p><img src=/files/phack21/sudokuv2/c1.PNG alt=capture1></p><p>I checked the rights on the flag file :</p><p><img src=/files/phack21/sudokuv2/c2.PNG alt=capture2></p><p>We can see that only user master can read the file.
-It means that we have to do some kinds of privilege escalations in order to read the file.</p><p>First thing that come to my mind is to check if there is some commands that we are able to run as others users.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo -l
-</code></pre></div><p><img src=/files/phack21/sudokuv2/c3.PNG alt=capture3></p><p>We can see that i&rsquo;m asked to enter the password of my current user.
-What we don&rsquo;t see on the screenshot is that while I was entering the password, I had the asterisks I talk about earlier.</p><p>For example the password of padawan user is : &ldquo;padawan&rdquo; so when I entering it I had something like : &ldquo;*******&rdquo;</p><p>Let&rsquo;s try to enumerate all binaries having SUID permissions by using following command :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>find / -perm -u<span style=color:#f92672>=</span>s -type f 2&gt;/dev/null
-</code></pre></div><p><img src=/files/phack21/sudokuv2/c4.PNG alt=capture4></p><p>Nothing really interesting, I don&rsquo;t know what &ldquo;abuildsudo&rdquo; is.</p><p>I didn&rsquo;t spend much time on this and I started looking for some privilege escalation when asterisks are enabled on the system.
+<a href=/about class="p-3 text-decoration-none text-dark bold">About</a>
+</div>
+</div>
+</nav>
+</div>
+</div>
+</header>
+<div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
+<div class=container>
+<div class=row>
+<div class=col-xl-12>
+<h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>SUDOKUV2</span></h1>
+<div class=cut>
+</div>
+<p class="text-spacey text-center hackerFont lead" style=color:gray> P'Hack 2021 - pwn (256 pts).<br>Written by BisBis.</p>
+<div class=chall>
+<h1 id=sudoku-v2>Sudoku v2</h1>
+<p>On this challenge, we got a little hint in the description about the fact that, in order to help the user the system administrator
+enabled asterisks when entering a password.</p>
+<p>We connect via ssh with given login/password</p>
+<p>We when connect, we are prompted with a message :</p>
+<p><img src=/files/phack21/sudokuv2/c1.PNG alt=capture1></p>
+<p>I checked the rights on the flag file :</p>
+<p><img src=/files/phack21/sudokuv2/c2.PNG alt=capture2></p>
+<p>We can see that only user master can read the file.
+It means that we have to do some kinds of privilege escalations in order to read the file.</p>
+<p>First thing that come to my mind is to check if there is some commands that we are able to run as others users.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo -l
+</code></pre></div><p><img src=/files/phack21/sudokuv2/c3.PNG alt=capture3></p>
+<p>We can see that i&rsquo;m asked to enter the password of my current user.
+What we don&rsquo;t see on the screenshot is that while I was entering the password, I had the asterisks I talk about earlier.</p>
+<p>For example the password of padawan user is : &ldquo;padawan&rdquo; so when I entering it I had something like : &ldquo;*******&rdquo;</p>
+<p>Let&rsquo;s try to enumerate all binaries having SUID permissions by using following command :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>find / -perm -u<span style=color:#f92672>=</span>s -type f 2&gt;/dev/null
+</code></pre></div><p><img src=/files/phack21/sudokuv2/c4.PNG alt=capture4></p>
+<p>Nothing really interesting, I don&rsquo;t know what &ldquo;abuildsudo&rdquo; is.</p>
+<p>I didn&rsquo;t spend much time on this and I started looking for some privilege escalation when asterisks are enabled on the system.
 And I quickly found that there is a pretty recent buffer overflow privilege escalation when this option is enabled.
-So in order to test if this is a buffer overflow :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>perl -e <span style=color:#e6db74>&#39;print((&#34;A&#34; x 100 . &#34;\x{00}&#34;) x 50)&#39;</span> | sudo -S id
-</code></pre></div><p>This command just print a lot of character when the password is prompted.</p><p><img src=/files/phack21/sudokuv2/c5.PNG alt=capture5></p><p>And that&rsquo;s it ! Segmentation fault, it means that the solution is to use this buffer overflow.</p><p>I found a very interesting website that explain the buffer overflow and gives a script to achieve it : <a href=https://dylankatz.com/Analysis-of-CVE-2019-18634/>https://dylankatz.com/Analysis-of-CVE-2019-18634/</a></p><p>And his git : <a href=https://github.com/Plazmaz/CVE-2019-18634>https://github.com/Plazmaz/CVE-2019-18634</a></p><p>Time to exploit :</p><p><img src=/files/phack21/sudokuv2/c6.PNG alt=capture6></p><p>As you can see, the script works flawlessly and we can get the flag !</p><p><img src=/files/phack21/sudokuv2/c7.PNG alt=capture7></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script></body></html>
+So in order to test if this is a buffer overflow :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>perl -e <span style=color:#e6db74>&#39;print((&#34;A&#34; x 100 . &#34;\x{00}&#34;) x 50)&#39;</span> | sudo -S id
+</code></pre></div><p>This command just print a lot of character when the password is prompted.</p>
+<p><img src=/files/phack21/sudokuv2/c5.PNG alt=capture5></p>
+<p>And that&rsquo;s it ! Segmentation fault, it means that the solution is to use this buffer overflow.</p>
+<p>I found a very interesting website that explain the buffer overflow and gives a script to achieve it : <a href=https://dylankatz.com/Analysis-of-CVE-2019-18634/>https://dylankatz.com/Analysis-of-CVE-2019-18634/</a></p>
+<p>And his git : <a href=https://github.com/Plazmaz/CVE-2019-18634>https://github.com/Plazmaz/CVE-2019-18634</a></p>
+<p>Time to exploit :</p>
+<p><img src=/files/phack21/sudokuv2/c6.PNG alt=capture6></p>
+<p>As you can see, the script works flawlessly and we can get the flag !</p>
+<p><img src=/files/phack21/sudokuv2/c7.PNG alt=capture7></p>
+</div>
+</div>
+</div>
+</div>
+<script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script>
+</body>
+</html>

@@ -1,9 +1,79 @@
-<!doctype html><html lang=fr-fr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Tchoupa-Team</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous><link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css><link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet><link rel=stylesheet href=https://tchoupapps.fr/css/main.css><link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css><link rel=stylesheet href=https://tchoupapps.fr/css/menu.css><link rel=stylesheet href=https://tchoupapps.fr/css/member.css><link rel=stylesheet href=https://tchoupapps.fr/css/chall.css></head>}<body class=imgloaded><header><div class=navbar-dark><div class="container menu"><nav class="navbar px-0 navbar-expand-lg"><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a href=index.html class="pl-md-0 p-3 text-decoration-none"><h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3></a></div><div class="navbar-nav ml-auto"><a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
+<!doctype html><html lang=fr-fr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Tchoupa-Team</title>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous>
+<link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet>
+<link rel=stylesheet href=https://tchoupapps.fr/css/main.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/menu.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/member.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/chall.css>
+</head>}
+<body class=imgloaded>
+<header>
+<div class=navbar-dark>
+<div class="container menu">
+<nav class="navbar px-0 navbar-expand-lg">
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarNavAltMarkup>
+<div class=navbar-nav>
+<a href=index.html class="pl-md-0 p-3 text-decoration-none">
+<h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3>
+</a>
+</div>
+<div class="navbar-nav ml-auto">
+<a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
 <a href=/posts class="p-3 text-decoration-none text-dark bold">Writeups</a>
-<a href=/about class="p-3 text-decoration-none text-dark bold">About</a></div></div></nav></div></div></header><div class="jumbotron bg-transparent mb-0 pt-3 radius-0"><div class=container><div class=row><div class=col-xl-12><h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>LEAP-OF-FAITH</span></h1><div class=cut></div><p class="text-spacey text-center hackerFont lead" style=color:gray>Swamp CTF 2019 - forensic (499 pts).<br>Written by ChapeauR0uge.</p><div class=chall><h1 id=leap-of-faith>Leap of Faith</h1><h2 id=description>Description</h2><p><img src=/files/swampctf19/leap-of-faith/pres.png alt="leap_of_faith - SwampCTF'19"></p><h2 id=résolution>Résolution</h2><p>D&rsquo;apres la description, il s&rsquo;agit d&rsquo;une citation du film matrix, avec comme particularité de nous parler d&rsquo;outils de stego, avec une <a href=/files/swampctf19/leap-of-faith/leap_of_faith.jpg>image de neo</a>.</p><p>La première chose que je fais, c&rsquo;est une verification du type de fichier :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>file leap_of_faith.jpg
-</code></pre></div><p><img src=/files/swampctf19/leap-of-faith/step1.png alt="step1 - SwampCTF'19"></p><p>Rien d&rsquo;anormale dans le fichier, il correspond bien à son type.</p><p>J&rsquo;essaye donc d&rsquo;extraire les données exif de l&rsquo;image.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool leap_of_faith.jpg
-</code></pre></div><p><img src=/files/swampctf19/leap-of-faith/step2.png alt="step2 - SwampCTF'19"></p><p>Je remarque la présence d&rsquo;un thumbnail, que j&rsquo;extrais de la manière suivante:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool -b -ThumbnailImage leap_of_faith.jpg &gt; thumb1.jpg
-</code></pre></div><p>J&rsquo;obtiens une image de Morpheus.</p><p><img src=/files/swampctf19/leap-of-faith/thumb1.jpg alt="morpheus - SwampCTF'19"></p><p>Je répète l&rsquo;opération précédente</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool thumb1.jpg
-</code></pre></div><p><img src=/files/swampctf19/leap-of-faith/step3.png alt="step3 - SwampCTF'19"></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool -b -ThumbnailImage thumb1.jpg &gt; thumb2.jpg
-</code></pre></div><p>Nous obtenons le flag, sous forme de fichier jpg.</p><p><img src=/files/swampctf19/leap-of-faith/thumb2.jpg alt="flag - SwampCTF'19"></p><h2 id=flag>Flag</h2><p><strong>flag{FR33_Y0UR_M1ND}</strong></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script></body></html>
+<a href=/about class="p-3 text-decoration-none text-dark bold">About</a>
+</div>
+</div>
+</nav>
+</div>
+</div>
+</header>
+<div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
+<div class=container>
+<div class=row>
+<div class=col-xl-12>
+<h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>LEAP-OF-FAITH</span></h1>
+<div class=cut>
+</div>
+<p class="text-spacey text-center hackerFont lead" style=color:gray> Swamp CTF 2019 - forensic (499 pts).<br>Written by ChapeauR0uge.</p>
+<div class=chall>
+<h1 id=leap-of-faith>Leap of Faith</h1>
+<h2 id=description>Description</h2>
+<p><img src=/files/swampctf19/leap-of-faith/pres.png alt="leap_of_faith - SwampCTF'19"></p>
+<h2 id=résolution>Résolution</h2>
+<p>D&rsquo;apres la description, il s&rsquo;agit d&rsquo;une citation du film matrix, avec comme particularité de nous parler d&rsquo;outils de stego, avec une <a href=/files/swampctf19/leap-of-faith/leap_of_faith.jpg>image de neo</a>.</p>
+<p>La première chose que je fais, c&rsquo;est une verification du type de fichier :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>file leap_of_faith.jpg
+</code></pre></div><p><img src=/files/swampctf19/leap-of-faith/step1.png alt="step1 - SwampCTF'19"></p>
+<p>Rien d&rsquo;anormale dans le fichier, il correspond bien à son type.</p>
+<p>J&rsquo;essaye donc d&rsquo;extraire les données exif de l&rsquo;image.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool leap_of_faith.jpg
+</code></pre></div><p><img src=/files/swampctf19/leap-of-faith/step2.png alt="step2 - SwampCTF'19"></p>
+<p>Je remarque la présence d&rsquo;un thumbnail, que j&rsquo;extrais de la manière suivante:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool -b -ThumbnailImage leap_of_faith.jpg &gt; thumb1.jpg
+</code></pre></div><p>J&rsquo;obtiens une image de Morpheus.</p>
+<p><img src=/files/swampctf19/leap-of-faith/thumb1.jpg alt="morpheus - SwampCTF'19"></p>
+<p>Je répète l&rsquo;opération précédente</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool thumb1.jpg
+</code></pre></div><p><img src=/files/swampctf19/leap-of-faith/step3.png alt="step3 - SwampCTF'19"></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>exiftool -b -ThumbnailImage thumb1.jpg &gt; thumb2.jpg
+</code></pre></div><p>Nous obtenons le flag, sous forme de fichier jpg.</p>
+<p><img src=/files/swampctf19/leap-of-faith/thumb2.jpg alt="flag - SwampCTF'19"></p>
+<h2 id=flag>Flag</h2>
+<p><strong>flag{FR33_Y0UR_M1ND}</strong></p>
+</div>
+</div>
+</div>
+</div>
+<script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script>
+</body>
+</html>

@@ -1,9 +1,63 @@
-<!doctype html><html lang=fr-fr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Tchoupa-Team</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous><link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css><link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet><link rel=stylesheet href=https://tchoupapps.fr/css/main.css><link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css><link rel=stylesheet href=https://tchoupapps.fr/css/menu.css><link rel=stylesheet href=https://tchoupapps.fr/css/member.css><link rel=stylesheet href=https://tchoupapps.fr/css/chall.css></head>}<body class=imgloaded><header><div class=navbar-dark><div class="container menu"><nav class="navbar px-0 navbar-expand-lg"><button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
-<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarNavAltMarkup><div class=navbar-nav><a href=index.html class="pl-md-0 p-3 text-decoration-none"><h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3></a></div><div class="navbar-nav ml-auto"><a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
+<!doctype html><html lang=fr-fr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Tchoupa-Team</title>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.6.3/css/all.css integrity=sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/ crossorigin=anonymous>
+<link rel=stylesheet href=https://tchoupapps.fr/css/bootstrap4-neon-glow.css>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel=stylesheet>
+<link rel=stylesheet href=https://tchoupapps.fr/css/main.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/glitch.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/menu.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/member.css>
+<link rel=stylesheet href=https://tchoupapps.fr/css/chall.css>
+</head>}
+<body class=imgloaded>
+<header>
+<div class=navbar-dark>
+<div class="container menu">
+<nav class="navbar px-0 navbar-expand-lg">
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarNavAltMarkup>
+<div class=navbar-nav>
+<a href=index.html class="pl-md-0 p-3 text-decoration-none">
+<h3 class=bold><span class=color_danger>TCHOUPA</span><span class=color_white>TEAM</span></h3>
+</a>
+</div>
+<div class="navbar-nav ml-auto">
+<a href=/ class="p-3 text-decoration-none text-dark bold">Home</a>
 <a href=/posts class="p-3 text-decoration-none text-dark bold">Writeups</a>
-<a href=/about class="p-3 text-decoration-none text-dark bold">About</a></div></div></nav></div></div></header><div class="jumbotron bg-transparent mb-0 pt-3 radius-0"><div class=container><div class=row><div class=col-xl-12><h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>WIKIBOT</span></h1><div class=cut></div><p class="text-spacey text-center hackerFont lead" style=color:gray>P'Hack 2021 - misc (256 pts).<br>Written by ChapeauR0uge.</p><div class=chall><h1 id=wikibot>WikiBot</h1><h2 id=description>Description</h2><p><img src=/files/phack21/wikibot/WikiBot.PNG alt="WikiBot - P&rsquo;Hack'21"></p><h2 id=solve>Solve</h2><p>Nous avons un lien vers le discord du CTF.</p><p>Après avoir envoyer un DM au bot, celui-ci, nous demande de répondre à une série de questions en moins de 3 secondes.</p><p>Pour résoudre ce challenge, je vais utilisé mon compte Discord pour communiquer avec ce bot à travers l&rsquo;API discord.</p><p>J&rsquo;ai donc besoin de <a href=https://discordpy.readthedocs.io/en/latest/index.html>DiscordPy</a> pour mon programme en python.</p><p>J&rsquo;ai besoin de deux informations, pour pouvoir communiquer avec le bot.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>BOT_TOKEN <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;TOKEN&gt;&#34;</span> <span style=color:#75715e># Le token ID  de mon profil discord</span>
+<a href=/about class="p-3 text-decoration-none text-dark bold">About</a>
+</div>
+</div>
+</nav>
+</div>
+</div>
+</header>
+<div class="jumbotron bg-transparent mb-0 pt-3 radius-0">
+<div class=container>
+<div class=row>
+<div class=col-xl-12>
+<h1 class="display-1 bold color_white content__title text-center"><span class=color_danger>WIKIBOT</span></h1>
+<div class=cut>
+</div>
+<p class="text-spacey text-center hackerFont lead" style=color:gray> P'Hack 2021 - misc (256 pts).<br>Written by ChapeauR0uge.</p>
+<div class=chall>
+<h1 id=wikibot>WikiBot</h1>
+<h2 id=description>Description</h2>
+<p><img src=/files/phack21/wikibot/WikiBot.PNG alt="WikiBot - P&rsquo;Hack'21"></p>
+<h2 id=solve>Solve</h2>
+<p>Nous avons un lien vers le discord du CTF.</p>
+<p>Après avoir envoyer un DM au bot, celui-ci, nous demande de répondre à une série de questions en moins de 3 secondes.</p>
+<p>Pour résoudre ce challenge, je vais utilisé mon compte Discord pour communiquer avec ce bot à travers l&rsquo;API discord.</p>
+<p>J&rsquo;ai donc besoin de <a href=https://discordpy.readthedocs.io/en/latest/index.html>DiscordPy</a> pour mon programme en python.</p>
+<p>J&rsquo;ai besoin de deux informations, pour pouvoir communiquer avec le bot.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>BOT_TOKEN <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&lt;TOKEN&gt;&#34;</span> <span style=color:#75715e># Le token ID  de mon profil discord</span>
 TARGET_ID <span style=color:#f92672>=</span> <span style=color:#f92672>&lt;</span>AUTHOR_ID<span style=color:#f92672>&gt;</span> <span style=color:#75715e># Le message.author.id cible du bot du challenge</span>
-</code></pre></div><p>Au final, j&rsquo;ai écrit le code suivant <a href=/files/phack21/wikibot/bot_discord.py>bot_discord.py</a> :</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MyClient</span>(discord<span style=color:#f92672>.</span>Client):
+</code></pre></div><p>Au final, j&rsquo;ai écrit le code suivant <a href=/files/phack21/wikibot/bot_discord.py>bot_discord.py</a> :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MyClient</span>(discord<span style=color:#f92672>.</span>Client):
     <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>on_ready</span>(self):
         print(<span style=color:#e6db74>&#39;Logged on as </span><span style=color:#e6db74>{0}</span><span style=color:#e6db74>!&#39;</span><span style=color:#f92672>.</span>format(self<span style=color:#f92672>.</span>user))
 
@@ -28,5 +82,16 @@ TARGET_ID <span style=color:#f92672>=</span> <span style=color:#f92672>&lt;</spa
 
 client <span style=color:#f92672>=</span> MyClient()
 client<span style=color:#f92672>.</span>run(BOT_TOKEN, bot<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>) <span style=color:#75715e># bot=False, because it&#39;s my real user token account (not a dev bot_token from discord)</span>
-</code></pre></div><p>Après éxecution de celui-ci:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>python3 bot_discord.py
-</code></pre></div><p>J&rsquo;obtiens le flag en DM.</p><h2 id=flag>Flag</h2><p><strong>PHACK{i_4m_th3_w1k1_b0t}</strong></p></div></div></div></div><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script></body></html>
+</code></pre></div><p>Après éxecution de celui-ci:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>python3 bot_discord.py
+</code></pre></div><p>J&rsquo;obtiens le flag en DM.</p>
+<h2 id=flag>Flag</h2>
+<p><strong>PHACK{i_4m_th3_w1k1_b0t}</strong></p>
+</div>
+</div>
+</div>
+</div>
+<script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js integrity=sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 crossorigin=anonymous></script>
+</body>
+</html>
